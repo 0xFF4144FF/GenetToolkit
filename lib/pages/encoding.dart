@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:genet/pages/networking/dnslookup.dart';
-import 'package:genet/pages/networking/whois.dart';
+import 'package:genet/pages/encoding/encoding.dart';
+import 'package:genet/pages/encoding/decoding.dart';
 
-class Networking extends StatefulWidget {
-  const Networking({super.key}); 
+class Encoding extends StatefulWidget {
+  const Encoding({super.key});
 
   @override
-  State<Networking> createState() => _NetworkingState();
+  State<Encoding> createState() => _EncodingState();
 }
-class _NetworkingState extends State<Networking>{
 
+class _EncodingState extends State<Encoding> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController( 
@@ -22,15 +22,15 @@ class _NetworkingState extends State<Networking>{
         backgroundColor:const Color.fromRGBO(20, 23, 59, 1), 
         bottomNavigationBar: const TabBar(
           tabs: [
-            Tab(child: Text('[DNS Lookup]', style: TextStyle(color: Colors.white),)),
-            Tab(child: Text('[WHOIS Lookup]', style: TextStyle(color: Colors.white),),),
+            Tab(child: Text('[Encoding]', style: TextStyle(color: Colors.white),)),
+            Tab(child: Text('[Decoding]', style: TextStyle(color: Colors.white),),),
           ]
         ),
         body : const TabBarView(
           physics: AlwaysScrollableScrollPhysics(),
           children: [
-            DnsLookup(), 
-            Whois(),   
+            Encode(), 
+            Decode(),   
           ],
         ),
       ),

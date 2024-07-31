@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:genet/utils/types.dart';
-import 'package:genet/utils/networking_funcs.dart';
+import 'package:genet/utils/networking.dart';
 
 class DnsLookup extends StatefulWidget {
   const DnsLookup({super.key});

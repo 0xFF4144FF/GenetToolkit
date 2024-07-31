@@ -42,6 +42,13 @@ class _HomeState extends State<Home> {
                   Navigator.pushNamed(context, 'networking');
                 },          
               ),
+              ListTile(
+                leading: const Icon(Icons.enhanced_encryption, color: Colors.white),
+                title: const Text('Encoding', style: TextStyle(color: Colors.white, fontSize: 15, letterSpacing: 2)),
+                onTap: (){
+                  Navigator.pushNamed(context, 'encoding');
+                },          
+              ),
             ],
           ),
         ),
