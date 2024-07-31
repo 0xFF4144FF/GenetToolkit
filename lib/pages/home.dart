@@ -29,23 +29,17 @@ class _HomeState extends State<Home> {
       ),
       drawer: Drawer(
         shape: const LinearBorder(),
-        backgroundColor: const Color.fromRGBO(21, 25, 77, 1),
+        backgroundColor: const Color.fromRGBO(21, 25, 77, 1), 
         child: SafeArea(
           child: ListView(
             padding: EdgeInsets.zero,
             children: [
+              const SizedBox(height: 30,),
               ListTile(
-                leading: const Icon(Icons.dns, color: Colors.white),
-                title: const Text('DNS LOOKUP', style: TextStyle(color: Colors.white, fontSize: 15, letterSpacing: 2)),
+                leading: const Icon(Icons.network_check, color: Colors.white),
+                title: const Text('Networking', style: TextStyle(color: Colors.white, fontSize: 15, letterSpacing: 2)),
                 onTap: (){
-                  Navigator.pushNamed(context, 'dnslookup');
-                },          
-              ),
-              ListTile(
-                leading: const Icon(Icons.web_stories, color: Colors.white),
-                title: const Text('WHOIS LOOKUP', style: TextStyle(color: Colors.white, fontSize: 15, letterSpacing: 2)),
-                onTap: (){
-                  Navigator.pushNamed(context, 'whois');
+                  Navigator.pushNamed(context, 'networking');
                 },          
               ),
             ],

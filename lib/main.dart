@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:genet/pages/home.dart';
-import 'package:genet/pages/dnslookup.dart';
 import 'package:genet/pages/loading.dart';
-import 'package:genet/pages/whois.dart';
+import 'package:genet/pages/networking.dart';
 
 void main() {
   runApp(const MainApp());
@@ -19,10 +18,9 @@ class MainApp extends StatelessWidget {
       ),
       initialRoute: '/',
       routes: {
-        '/'         : (context) => const Home(), 
-        'dnslookup' : (context) => const DnsLookup(),
-        'whois'     : (context) => const Whois(),
-        'loading'   : (context) => const Loading(),
+        '/'          : (context) => const Home(), 
+        'loading'    : (context) => const Loading(),
+        'networking' : (context) => const Networking(),
       },
     );
   }

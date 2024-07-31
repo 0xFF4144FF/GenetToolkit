@@ -1,34 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
-
-class DNSData{
-  String address = '';
-  String ttl = '';
-  DNSData(this.address, this.ttl);
-}
-
-Future<DNSData> getDNSData(String domain) async {
-  Uri uri = Uri(
-    scheme: 'https',
-    host: 'networkcalc.com',
-    path: '/api/dns/lookup/$domain'
-  );
-  Response response = await get(uri);
-  if (response.statusCode == 200) {
-    Map data = jsonDecode(response.body);
-    List<dynamic> dataList = data['records']['A'];
-
-    dynamic uaddress = dataList[0]['address'];
-    dynamic uttl = dataList[0]['ttl'];
-
-    String address = dataList[0]['address'] != null ? uaddress : 'N/A';
-    String ttl = dataList[0]['ttl'] != null ? uttl.toString() : 'N/A';
-    return DNSData(address, ttl);
-  } else {
-    return DNSData('N/A','N/A');
-  }
-}
+import 'package:genet/utils/types.dart';
+import 'package:genet/utils/networking_funcs.dart';
 
 class DnsLookup extends StatefulWidget {
   const DnsLookup({super.key});
@@ -86,18 +58,18 @@ class _DnsLookupState extends State<DnsLookup> {
                       child: ListTile( 
                         leading: const Icon(Icons.dns, color: Colors.white,),
                         title: const Text('Address', style: TextStyle(color: Colors.white, fontSize: 15)),
-                        subtitle: Text(address, style: const TextStyle(letterSpacing: 4, color: Colors.white, fontSize: 12),),
+                        subtitle: Text(address, style: const TextStyle(letterSpacing: 2, color: Colors.white, fontSize: 12),),
                       )
-                    ),        
+                    ),
                     Card(
                       elevation: 10,
                       color: const Color.fromRGBO(25, 35, 69, 1),
                       child: ListTile( 
                         leading: const Icon(Icons.timelapse, color: Colors.white,),
                         title: const Text('TTL', style: TextStyle(color: Colors.white, fontSize: 15)),
-                        subtitle: Text(ttl, style: const TextStyle(letterSpacing: 4, color: Colors.white, fontSize: 12),),
+                        subtitle: Text(ttl, style: const TextStyle(letterSpacing: 2, color: Colors.white, fontSize: 12),),
                       )
-                    ),       
+                    ),
                     const SizedBox(height: 30),
                     SizedBox(
                       height: 50,
@@ -113,16 +85,6 @@ class _DnsLookupState extends State<DnsLookup> {
                           });
                         }, 
                         child: const Text('Search'),
-                      ),
-                    ),
-                    const SizedBox(height: 15),
-                    SizedBox(
-                      height: 50,
-                      child: FilledButton(
-                        onPressed: (){
-                          Navigator.pop(context);
-                        }, 
-                        child: const Icon(Icons.home),
                       ),
                     ),
                   ],
