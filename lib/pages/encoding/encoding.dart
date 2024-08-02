@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-List<String> encodingdecodingList = ['Base64', 'sdfsdfsdf', 'sdfsdfsdf'];
+import 'package:genet/utils/encoding.dart';
 
 class Encode extends StatefulWidget {
   const Encode({super.key});
@@ -12,6 +11,15 @@ class Encode extends StatefulWidget {
 class _EncodingState extends State<Encode> {
  
   String dropdownValue = encodingdecodingList.first;
+  final inputController = TextEditingController(); 
+  final outputController = TextEditingController(); 
+
+  @override
+  void dispose() {
+    outputController.dispose();
+    inputController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,24 +38,29 @@ class _EncodingState extends State<Encode> {
                     const SizedBox(height: 30),
                     const Center(child: Text(':: Encoding ::', style: TextStyle(color: Colors.white, fontSize: 20),)),
                     const SizedBox(height: 50),
-
-                    // DropdownButton<String>(
-                    //   value: dropdownValue,
-                    //   onChanged: (String? value){
-                    //     setState(() {
-                    //       dropdownValue = value!;
-                    //     });
-                    //   },
-                    //   items: encodingdecodingList.map<DropdownMenuItem<String>>((String value) {
-                    //     return DropdownMenuItem<String>(
-                    //       value: value,
-                    //       child: Text(value),
-                    //     );
-                    //   }).toList(),
-                    // ),
-
+                    DropdownButton<String>(
+                      value: dropdownValue,
+                      onChanged: (String? value){
+                        if (value is String){ 
+                          setState(() {
+                            dropdownValue = value;
+                          });
+                        }
+                      },
+                      items: encodingdecodingList.map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(                      
+                          value: value,
+                          child: Text(value ,style: const TextStyle(color: Colors.white, fontSize: 15)),
+                        );
+                      }).toList(),
+                      iconEnabledColor: Colors.white,
+                      dropdownColor: Colors.orange,
+                      isExpanded: true,         
+                      icon: const Icon(Icons.enhanced_encryption),     
+                    ),
                     const SizedBox(height: 50),
-                    const TextField(
+                    TextField(
+                      controller: inputController,
                       style: const TextStyle(color: Colors.white),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
@@ -55,11 +68,13 @@ class _EncodingState extends State<Encode> {
                         ),
                         labelStyle: TextStyle(color: Colors.orange),
                         hintStyle: TextStyle(color: Colors.white, fontSize: 13),
-                        hintText: 'Input goes here!',
+                        hintText: 'Input goes here...',
                       ),
                     ),
                     const SizedBox(height: 30),
-                    const TextField(
+                    TextField(
+                      controller: outputController,
+                      readOnly: true,
                       maxLines: 5,
                       style: const TextStyle(color: Colors.white),                   
                       decoration: const InputDecoration(
@@ -67,14 +82,18 @@ class _EncodingState extends State<Encode> {
                           borderSide: BorderSide(color: Colors.white),                      
                         ),
                         hintStyle: TextStyle(color: Colors.white, fontSize: 13),
-                        hintText: 'Output goes here',             
+                        hintText: 'Result goes here...',             
                       ),
                     ),
                     const SizedBox(height: 30),
                     SizedBox(
                       height: 50,
                       child: FilledButton(
-                        onPressed: () {}, 
+                        onPressed: () {
+                          setState(() {
+                            outputController.text = encodeString(dropdownValue, inputController.text);
+                          });
+                        }, 
                         child: const Text('Encode'),
                       ),
                     ),
