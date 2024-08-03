@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -36,17 +37,24 @@ class _HomeState extends State<Home> {
             children: [
               const SizedBox(height: 30,),
               ListTile(
-                leading: const Icon(Icons.network_check, color: Colors.white),
+                leading: const Icon(Ionicons.globe, color: Colors.white),
                 title: const Text('Networking', style: TextStyle(color: Colors.white, fontSize: 15, letterSpacing: 2)),
                 onTap: (){
                   Navigator.pushNamed(context, 'networking');
                 },          
               ),
               ListTile(
-                leading: const Icon(Icons.enhanced_encryption, color: Colors.white),
+                leading: const Icon(Ionicons.lock_closed, color: Colors.white),
                 title: const Text('Encoding', style: TextStyle(color: Colors.white, fontSize: 15, letterSpacing: 2)),
                 onTap: (){
                   Navigator.pushNamed(context, 'encoding');
+                },          
+              ),
+              ListTile(
+                leading: const Icon(Ionicons.shield_half_sharp, color: Colors.white),
+                title: const Text('Hashing', style: TextStyle(color: Colors.white, fontSize: 15, letterSpacing: 2)),
+                onTap: (){
+                  Navigator.pushNamed(context, 'hashing');
                 },          
               ),
             ],
