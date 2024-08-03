@@ -61,13 +61,13 @@ class _EncodingState extends State<Decode> {
                     const SizedBox(height: 50),
                     TextField(
                       controller: inputController,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.orange),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
                         labelStyle: TextStyle(color: Colors.orange),
-                        hintStyle: TextStyle(color: Colors.white, fontSize: 13),
+                        hintStyle: TextStyle(color: Colors.orange, fontSize: 13),
                         hintText: 'Input goes here...',
                       ),
                     ),
@@ -76,12 +76,12 @@ class _EncodingState extends State<Decode> {
                       controller: outputController,
                       readOnly: true,
                       maxLines: 5,
-                      style: const TextStyle(color: Colors.white),                   
+                      style: const TextStyle(color: Colors.orange),                   
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),                      
                         ),
-                        hintStyle: TextStyle(color: Colors.white, fontSize: 13),
+                        hintStyle: TextStyle(color: Colors.orange, fontSize: 13),
                         hintText: 'Result goes here...',             
                       ),
                     ),

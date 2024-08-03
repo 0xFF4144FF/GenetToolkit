@@ -25,6 +25,10 @@ class _HashingState extends State<Hashing> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        foregroundColor: Colors.white,
+        backgroundColor: const Color.fromRGBO(20, 23, 59, 1),
+      ),
       backgroundColor: const Color.fromRGBO(20, 23, 59, 1),
       body: SafeArea(
         child: Center(
@@ -64,13 +68,13 @@ class _HashingState extends State<Hashing> {
                     const SizedBox(height: 50),
                     TextField(
                       controller: inputController,
-                      style: const TextStyle(color: Colors.white),
+                      style: const TextStyle(color: Colors.orange),
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
                         labelStyle: TextStyle(color: Colors.orange),
-                        hintStyle: TextStyle(color: Colors.white, fontSize: 13),
+                        hintStyle: TextStyle(color: Colors.orange, fontSize: 13),
                         hintText: 'Input goes here...',
                       ),
                     ),
@@ -79,12 +83,12 @@ class _HashingState extends State<Hashing> {
                       controller: outputController,
                       readOnly: true,
                       maxLines: 5,
-                      style: const TextStyle(color: Colors.white),                   
+                      style: const TextStyle(color: Colors.orange),                   
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),                      
                         ),
-                        hintStyle: TextStyle(color: Colors.white, fontSize: 13),
+                        hintStyle: TextStyle(color: Colors.orange, fontSize: 13),
                         hintText: 'Result goes here...',             
                       ),
                     ),
